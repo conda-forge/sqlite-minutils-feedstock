@@ -1,13 +1,13 @@
 {% set name = "sqlite-minutils" %}
-{% set version = "3.37.0.post4" %}
+{% set version = "4.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2828cbf0c6f1f44f14f414410da465fe87eb6b6d4be319a7c1708294e153472e
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d391c067b6c88f7a1917c8781fa3924eb2afbbadf06d7b548ac4a551b3e71e72
 
 build:
   noarch: python
@@ -16,12 +16,12 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<4.0
+    - python >=3.8
     - setuptools >=42
     - wheel
     - pip
   run:
-    - python >=3.7,<4.0
+    - python >=3.8
     - fastcore
 
 test:
