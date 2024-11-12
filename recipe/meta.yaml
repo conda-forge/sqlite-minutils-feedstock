@@ -1,5 +1,5 @@
 {% set name = "sqlite-minutils" %}
-{% set version = "4.0.0" %}
+{% set version = "4.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d391c067b6c88f7a1917c8781fa3924eb2afbbadf06d7b548ac4a551b3e71e72
+  sha256: 0c4830abfddf33b066357c261c98d1ce8b3d67bfbcf035fa57e9285b12da9ee5
 
 build:
   noarch: python
