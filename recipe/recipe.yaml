@@ -35,7 +35,7 @@ tests:
       - python -c "import sqlite_minutils"
     requirements:
       run:
-      - ${{ python_min }}
+      - python ${{ python_min }}
 
 about:
   summary: A fork of sqlite-utils with CLI etc removed
@@ -47,4 +47,3 @@ about:
 extra:
   recipe-maintainers:
     - synapticarbors
-
