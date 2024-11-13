@@ -1,0 +1,50 @@
+context:
+  name: sqlite-minutils
+  version: 4.0.2
+  python_min: "3.8"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 4ed01ff525ffded7c43fa8c963b2566733943b769be5cb408acd97feff626fac
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}
+    - setuptools >=64.0
+    - wheel
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - fastcore
+
+tests:
+  - python:
+      imports:
+        - sqlite_minutils
+      pip_check: true
+  - script:
+      - python -c "import sqlite_minutils"
+    requirements:
+      run:
+      - ${{ python_min }}
+
+about:
+  summary: A fork of sqlite-utils with CLI etc removed
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/AnswerDotAI/sqlite-minutils
+  repository: https://github.com/AnswerDotAI/sqlite-minutils
+
+extra:
+  recipe-maintainers:
+    - synapticarbors
+
