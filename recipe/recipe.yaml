@@ -1,7 +1,6 @@
 context:
   name: sqlite-minutils
-  version: 4.0.2
-  python_min: "3.9"
+  version: "4.0.3"
 
 package:
   name: ${{ name|lower }}
@@ -9,17 +8,18 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 4ed01ff525ffded7c43fa8c963b2566733943b769be5cb408acd97feff626fac
+  sha256: c3fc6d20f86b2cd0071eaa9e356024ef83aba3ce9d9606e50c4ab255c3279a71
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python ${{ python_min }}.*
-    - setuptools >=64.0
+    # pin setuptools since >=82 drops pgk_resources
+    - setuptools >=64.0,<82.0
     - wheel
     - pip
   run:
@@ -31,11 +31,7 @@ tests:
       imports:
         - sqlite_minutils
       pip_check: true
-  - script:
-      - python -c "import sqlite_minutils"
-    requirements:
-      run:
-      - python ${{ python_min }}.*
+      python_version: ${{ python_min }}.*
 
 about:
   summary: A fork of sqlite-utils with CLI etc removed
